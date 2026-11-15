@@ -182,6 +182,8 @@ Job — это скан одного манифеста.
 - `parsing | querying | enriching → failed`
 - `created → cancelled` — отмена до начала работы
 - `enriching → cancelled` — отмена во время работы: скан дорабатывает, отчёт не публикуется
+- `parsing | querying | enriching → created` — только при запуске сервиса: скан, который обрабатывался
+  в момент остановки, возвращается в очередь; после трёх попыток — `failed`
 
 **Запрещённые переходы:**
 - любой переход из `done`, `partial`, `failed`, `cancelled`;
