@@ -56,3 +56,15 @@ VulnScout делает эту проверку одним запросом к AP
 
 Go 1.26, PostgreSQL, `goose` (миграции), `testing` + testcontainers-go, GitHub Actions, Docker Compose.
 
+## Доменное ядро (практика 3)
+
+Пакет `internal/core` реализует проверяемый жизненный цикл скана, Registry парсеров и Dispatcher. Парсеры
+`gomod` и `npm` реализуют общий интерфейс `Parser`; Dispatcher не зависит от их конкретных типов и получает
+`VulnSource` через интерфейс. Веб-фреймворк и драйвер БД в ядро не входят.
+
+Запуск модульных тестов и проверок гонок:
+
+```sh
+go test -race ./...
+```
+
